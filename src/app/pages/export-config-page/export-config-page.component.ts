@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Site } from 'src/app/models/site.model';
 import { SitesService } from 'src/app/services/sites.service';
 
@@ -7,7 +7,7 @@ import { SitesService } from 'src/app/services/sites.service';
   templateUrl: './export-config-page.component.html',
   styleUrls: ['./export-config-page.component.scss'],
 })
-export class ExportConfigPageComponent implements OnInit {
+export class ExportConfigPageComponent {
   output = 'Please wait...';
 
   constructor(private service: SitesService) {
@@ -40,5 +40,4 @@ server {
       .join('\n');
     return servers;
   }
-  ngOnInit(): void {}
 }

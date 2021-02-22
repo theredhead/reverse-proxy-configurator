@@ -1,7 +1,8 @@
 .link-button {
   color: blue;
   text-decoration: underline;
-}
-.link-button[disabled] {
-  color: gray;
+
+  &.disabled {
+    color: gray;
+  }
 }

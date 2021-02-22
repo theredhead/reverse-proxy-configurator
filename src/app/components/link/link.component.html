@@ -1,8 +1,7 @@
-<button
-  [disabled]="disabled"
-  mat-button
+<span
   class="link-button"
+  [class.disabled]="disabled"
   (click)="openInNewWindow()"
 >
   <ng-content></ng-content>
-</button>
+</span>
