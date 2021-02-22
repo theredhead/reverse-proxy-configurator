@@ -1,5 +1,5 @@
 <ng-container *ngIf="site; else overview">
-  <mat-card>
+  <mat-card class="card-margin">
     <mat-card-header>
       <img src="/assets/image/site.png" alt="Site" mat-card-avatar />
       <mat-card-title>Editing: {{ site.name }}</mat-card-title>
@@ -41,7 +41,7 @@
         </mat-form-field>
       </div>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="actions-right">
       <button
         mat-button
         (click)="confirmEditAndUpdateSite(site)"
@@ -59,7 +59,7 @@
 </ng-container>
 
 <ng-template #overview>
-  <mat-card>
+  <mat-card class="card-margin">
     <mat-card-header>
       <img src="/assets/image/sites.png" alt="Sites" mat-card-avatar />
       <mat-card-title>Overview of sites</mat-card-title>

@@ -44,12 +44,6 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-
-  ::ng-deep {
-    mat-card {
-      margin: 16px;
-    }
-  }
 }
 
 table {
@@ -73,10 +67,12 @@ table {
   }
 }
 
-::ng-deep {
-  .mat-card .mat-card-actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
+.card-margin {
+  margin: 32px auto !important;
+  width: fit-content;
+}
+.actions-right {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-end !important;
 }
