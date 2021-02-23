@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SiteSaveEventArg } from 'src/app/components/site-edit/site-edit.component';
 import { make_site, Site } from 'src/app/models/site.model';
 import { SitesService } from 'src/app/services/sites.service';
 
@@ -28,23 +29,22 @@ export class HomePageComponent implements OnInit {
     this.service.addSite(site);
     this.editSite(site);
   }
+
+  editSite(site: Site): void {
+    this.site = site;
+  }
+  cancelEdit(): void {
+    this.site = null;
+  }
+  saveSite(ev: SiteSaveEventArg): void {
+    console.log('saveSite', ev);
+    this.service.updateSite({old: ev.original, new: ev.changed});
+    this.site = null;
+  }
   deleteSite(site: Site): void {
     if (confirm('Are you sure?')) {
       this.service.deleteSite(site);
     }
-  }
-  editSite(site: Site): void {
-    this.site = site;
-  }
-  doneEditingSite(): void {
     this.site = null;
-  }
-  confirmEditAndUpdateSite(site: Site): void {
-    this.service.updateSite(site);
-    this.doneEditingSite();
-  }
-  cancelEditAndDeleteSite(site: Site): void {
-    this.site = null;
-    this.service.deleteSite(site);
   }
 }

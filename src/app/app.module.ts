@@ -11,6 +11,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { LinkComponent } from './components/link/link.component';
 import { ExportConfigPageComponent } from './pages/export-config-page/export-config-page.component';
+import { SiteEditComponent } from './components/site-edit/site-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ExportConfigPageComponent } from './pages/export-config-page/export-con
     NotFoundPageComponent,
     LinkComponent,
     ExportConfigPageComponent,
+    SiteEditComponent,
   ],
   imports: [
     BrowserModule,

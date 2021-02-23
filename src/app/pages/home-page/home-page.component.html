@@ -1,61 +1,10 @@
 <ng-container *ngIf="site; else overview">
-  <mat-card class="card-margin">
-    <mat-card-header>
-      <img src="/assets/image/site.png" alt="Site" mat-card-avatar />
-      <mat-card-title>Editing: {{ site.name }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div style="display: flex; flex-direction: column">
-        <mat-form-field>
-          <input
-            matInput
-            type="text"
-            [(ngModel)]="site.name"
-            placeholder="Name"
-          />
-        </mat-form-field>
-        <mat-form-field>
-          <textarea
-            matInput
-            type="text"
-            [(ngModel)]="site.description"
-            placeholder="Description"
-          ></textarea>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input
-            matInput
-            type="text"
-            [(ngModel)]="site.internalUrl"
-            placeholder="Internal URL"
-          />
-        </mat-form-field>
-        <mat-form-field>
-          <input
-            matInput
-            type="text"
-            [(ngModel)]="site.exposedUrl"
-            placeholder="Exposed URL"
-          />
-        </mat-form-field>
-      </div>
-    </mat-card-content>
-    <mat-card-actions class="actions-right">
-      <button
-        mat-button
-        (click)="confirmEditAndUpdateSite(site)"
-        color="primary"
-      >
-        <mat-icon>save</mat-icon>
-        Save
-      </button>
-      <button mat-button (click)="cancelEditAndDeleteSite(site)" color="warn">
-        <mat-icon>delete</mat-icon>
-        delete
-      </button>
-    </mat-card-actions>
-  </mat-card>
+  <app-site-edit
+    [site]="site"
+    (save)="saveSite($event)"
+    (delete)="deleteSite($event)"
+    (cancel)="cancelEdit()"
+  ></app-site-edit>
 </ng-container>
 
 <ng-template #overview>

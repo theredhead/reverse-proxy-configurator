@@ -1,0 +1,57 @@
+<mat-card class="card-margin">
+  <mat-card-header>
+    <img src="/assets/image/site.png" alt="Site" mat-card-avatar />
+    <mat-card-title>Editing: {{ original.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div style="display: flex; flex-direction: column">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="editing.name"
+          placeholder="Name"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          type="text"
+          [(ngModel)]="editing.description"
+          placeholder="Description"
+        ></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="editing.internalUrl"
+          placeholder="Internal URL"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="editing.exposedUrl"
+          placeholder="Exposed URL"
+        />
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="actions-right">
+    <button mat-button (click)="saveClick()" color="primary">
+      <mat-icon>save</mat-icon>
+      Save
+    </button>
+    <button mat-button (click)="cancelClick()">
+      <mat-icon>cancel</mat-icon>
+      cancel
+    </button>
+    <button mat-button (click)="deleteClick()" color="warn">
+      <mat-icon>delete</mat-icon>
+      delete
+    </button>
+  </mat-card-actions>
+</mat-card>

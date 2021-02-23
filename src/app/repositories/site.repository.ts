@@ -24,10 +24,11 @@ export class SiteDelete extends RepositoryAction<Site> {
 
 export class SiteUpdate extends RepositoryAction<Site> {
   type = '[Update Site]';
+  payload!: { old: Site; new: Site };
 
   run(data: Site[]): Site[] {
-    data[data.indexOf(this.payload)] = this.payload;
-    return data;
+    data[data.indexOf(this.payload.old)] = this.payload.new;
+    return [...data];
   }
 }
 // const SiteAction = SiteCreate | SiteDelete

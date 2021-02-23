@@ -1,9 +1,13 @@
 <mat-card class="card-margin">
   <mat-card-header>
+    <img src="/assets/image/settings.png" alt="settings" matCardAvatar />
     <mat-card-title>Configuration Files</mat-card-title>
+    <mat-card-subtitle
+      >Copy/Pastable configuration for your server.</mat-card-subtitle
+    >
   </mat-card-header>
   <mat-card-content>
-    <mat-tab-group>
+    <mat-tab-group dynamicHeight>
       <ng-container *ngFor="let key of availableConfigurations">
         <mat-tab [label]="key">
           <pre>{{ output[key] }}</pre>

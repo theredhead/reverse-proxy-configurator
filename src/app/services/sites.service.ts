@@ -21,8 +21,8 @@ export class SitesService {
   deleteSite(site: Site): void {
     this.repository.performAction(new SiteDelete(site));
   }
-  updateSite(site: Site): void {
-    this.repository.performAction(new SiteUpdate(site));
+  updateSite(payload: { old: Site; new: Site }): void {
+    this.repository.performAction(new SiteUpdate(payload));
   }
 
   constructor() {
