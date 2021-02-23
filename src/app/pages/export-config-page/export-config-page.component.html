@@ -1,1 +1,14 @@
-<pre>{{ output }}</pre>
+<mat-card class="card-margin">
+  <mat-card-header>
+    <mat-card-title>Configuration Files</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-tab-group>
+      <ng-container *ngFor="let key of availableConfigurations">
+        <mat-tab [label]="key">
+          <pre>{{ output[key] }}</pre>
+        </mat-tab>
+      </ng-container>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

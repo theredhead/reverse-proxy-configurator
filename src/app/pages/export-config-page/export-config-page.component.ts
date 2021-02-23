@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ApacheConfigWriter } from 'src/app/configuration-writers/apache-config-writer';
+import { ConfigWriter } from 'src/app/configuration-writers/config-writer';
+import { NginXCConfigWriter } from 'src/app/configuration-writers/nginx-config-writer';
 import { Site } from 'src/app/models/site.model';
 import { SitesService } from 'src/app/services/sites.service';
 
@@ -8,36 +11,22 @@ import { SitesService } from 'src/app/services/sites.service';
   styleUrls: ['./export-config-page.component.scss'],
 })
 export class ExportConfigPageComponent {
-  output = 'Please wait...';
+  readonly output: { [key: string]: string } = {};
+  readonly writers: { [key: string]: ConfigWriter } = {
+    nginx: new NginXCConfigWriter(),
+    apache: new ApacheConfigWriter(),
+  };
+  get availableConfigurations(): string[] {
+    return Object.keys(this.output);
+  }
 
   constructor(private service: SitesService) {
     this.service.sites$.subscribe((sites) => {
-      this.output = this.generateOutput(sites);
+      // tslint:disable-next-line:forin
+      for (const key in this.writers) {
+        const writer = this.writers[key];
+        this.output[key] = writer.writeAll(sites);
+      }
     });
-  }
-  generateHostConfig(site: Site): string {
-    try {
-      const url = new URL(site.exposedUrl);
-      return `
-server {
-  server_name ${url.host}
-  listen *:${url.port || 80}:
-
-  location / {
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-
-    proxy_pass ${site.internalUrl};
-  }
-}`;
-    } catch (error) {
-      return `# Error in ${site.name}: ${error}`;
-    }
-  }
-  generateOutput(sites: Site[]): string {
-    const servers = sites
-      .map((site) => this.generateHostConfig(site))
-      .join('\n');
-    return servers;
   }
 }
