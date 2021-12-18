@@ -14,6 +14,12 @@ export class NginXCConfigWriter extends ConfigWriter {
 
   write(site: Site): string {
     const url = new URL(site.exposedUrl);
+
+    const redirect = !site.redirectEnabled
+      ? ''
+      : `
+      rewrite (.*) ${site.redirectTarget} last;`;
+
     return `
   server {
     server_name ${url.host};
@@ -23,7 +29,7 @@ export class NginXCConfigWriter extends ConfigWriter {
       proxy_set_header Host $host;
       proxy_set_header X-Real-IP $remote_addr;
 
-      proxy_pass ${site.internalUrl};
+      proxy_pass ${site.internalUrl}; ${redirect}
     }
   }`;
   }

@@ -38,6 +38,24 @@
           placeholder="Exposed URL"
         />
       </mat-form-field>
+
+      <mat-checkbox
+        #redirectEnabled
+        [checked]="editing.redirectEnabled"
+        (change)="editing.redirectEnabled = $event.checked"
+      >
+        <mat-label>Enable fallback eedirect</mat-label>
+      </mat-checkbox>
+      <ng-container *ngIf="editing.redirectEnabled">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="editing.redirectTarget"
+            placeholder="Redirect Target"
+          />
+        </mat-form-field>
+      </ng-container>
     </div>
   </mat-card-content>
   <mat-card-actions class="actions-right">
