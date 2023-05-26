@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "reverse-proxy-configurator"
+  "defaultProject": "reverse-proxy-configurator",
+  "cli": {
+    "analytics": "50782214-a268-4c85-bcb5-22e3a6ce26d6"
+  }
 }

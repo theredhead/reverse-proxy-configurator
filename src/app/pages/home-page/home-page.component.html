@@ -1,60 +1,66 @@
 <ng-container *ngIf="site; else overview">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Editing: {{ site.name }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div style="display: flex; flex-direction: column">
-        <mat-form-field>
-          <input
-            matInput
-            type="text"
-            [(ngModel)]="site.name"
-            placeholder="Name"
-          />
-        </mat-form-field>
-        <mat-form-field>
-          <textarea
-            matInput
-            type="text"
-            [(ngModel)]="site.description"
-            placeholder="Description"
-          ></textarea>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input
-            matInput
-            type="text"
-            [(ngModel)]="site.internalUrl"
-            placeholder="Internal URL"
-          />
-        </mat-form-field>
-        <mat-form-field>
-          <input
-            matInput
-            type="text"
-            [(ngModel)]="site.exposedUrl"
-            placeholder="Exposed URL"
-          />
-        </mat-form-field>
-      </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button
-        mat-button
-        (click)="confirmEditAndUpdateSite(site)"
-        color="primary"
-      >
-        <mat-icon>save</mat-icon>
-        Save
-      </button>
-      <button mat-button (click)="cancelEditAndDeleteSite(site)" color="warn">
-        <mat-icon>delete</mat-icon>
-        delete
-      </button>
-    </mat-card-actions>
-  </mat-card>
+  <section>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Editing: {{ site.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div style="display: flex; flex-direction: column">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="site.name"
+              placeholder="Name"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              type="text"
+              [(ngModel)]="site.description"
+              placeholder="Description"
+            ></textarea>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <mat-label>Internal URL</mat-label>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="site.internalUrl"
+              placeholder="Internal URL"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Exposed URL</mat-label>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="site.exposedUrl"
+              placeholder="Exposed URL"
+            />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-button
+          (click)="confirmEditAndUpdateSite(site)"
+          color="primary"
+        >
+          <mat-icon>save</mat-icon>
+          Save
+        </button>
+        <button mat-button (click)="cancelEditAndDeleteSite(site)" color="warn">
+          <mat-icon>delete</mat-icon>
+          delete
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
 </ng-container>
 
 <ng-template #overview>
